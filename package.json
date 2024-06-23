@@ -1,0 +1,12 @@
+{
+    "name": "color-palette-finder",
+    "version": "1.0.0",
+    "description": "A color palette finder app",
+    "main": "index.js",
+    "author": "mstfsrts",
+    "license": "ISC",
+    "dependencies": {
+        "jsdom": "^24.1.0",
+        "node-fetch": "^3.3.2"
+    }
+}
