@@ -1,0 +1,12 @@
+export const HEX_INPUT_ID = 'hexInput';
+export const SUBMIT_BTN_ID = 'submitBtn';
+export const YES_BTN_ID = 'yesBtn';
+export const NO_BTN_ID = 'noBtn';
+export const CONFIRM_ID = 'confirm';
+export const PALETTE_DISPLAY_ID = 'paletteDisplay';
+export const LOADING_ID = 'loading';
+export const ERROR_ID = 'error';
+export const MAX_HEX_LENGTH = 6; // HEX code consists of 6 characters except the # sign
+export const COLOR_API_URL = 'https://www.thecolorapi.com';
+export const PALETTE_MODE = 'triad';
+export const PALETTE_COUNT = 6;
