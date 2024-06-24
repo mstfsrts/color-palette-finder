@@ -91,6 +91,7 @@ color-palette-finder/
 ├── prettier.config.js
 └── README.md
 
+
 ## JavaScript Files Description
 
 - **app.js**: Entry point of the application. Imports necessary modules and initializes the view and event handlers.
