@@ -31,7 +31,7 @@ body {
 
 input,
 button {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   padding: 0.875rem;
 }
 
@@ -53,8 +53,8 @@ button {
 }
 
 .color-div {
-  width: 5rem;
-  height: 5rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border: none;
 }
 
@@ -88,6 +88,67 @@ button {
   animation: spin 2s linear infinite;
 }
 
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.color-palette-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: calc(100% - 5rem);
+}
+
+#history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#history-list li {
+  width: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -101,14 +162,23 @@ button {
   color: red;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .container {
-    padding: 1rem;
-    width: 90vw;
+    padding: 1rem 0;
+    width: 99vw;
   }
 
   .color-container span {
     font-size: 0.75rem;
+  }
+
+  .color-palette-container {
+    display: flex;
+    width: 70%;
+    flex-flow: wrap;
+  }
+
+  #history-list {
+    padding: 0;
   }
 }

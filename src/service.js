@@ -1,4 +1,4 @@
-import { showLoading, hideLoading, showError } from './utils.js';
+import { showLoading, hideLoading, showError, writeHistory } from './utils.js';
 import { displayPalette } from './color.js';
 import { COLOR_API_URL, PALETTE_MODE, PALETTE_COUNT } from './constants.js';
 
@@ -28,6 +28,7 @@ export async function fetchPalette(hex) {
     }
     const data = await response.json();
     displayPalette(data.colors);
+    writeHistory(hex, data.colors);
   } catch (error) {
     showError('Error fetching palette data');
   }

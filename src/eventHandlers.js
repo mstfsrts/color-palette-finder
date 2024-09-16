@@ -3,6 +3,7 @@ import { enableSubmitButton, disableSubmitButton } from './buttonControl.js';
 import {
   HEX_INPUT_ID,
   SUBMIT_BTN_ID,
+  HISTORY_BTN_ID,
   YES_BTN_ID,
   NO_BTN_ID,
   CONFIRM_ID,
@@ -10,8 +11,35 @@ import {
 } from './constants.js';
 import { fetchColor } from './service.js';
 import { resetBackgroundColor } from './color.js';
+import { setupHistoryModal } from './setupHistoryModal.js';
 
 export function initializeEventHandlers() {
+  const historyBtn = document.getElementById(HISTORY_BTN_ID);
+  const modal = document.getElementById('history-modal');
+  const closeModalBtn = document.getElementById('close-modal');
+
+  const historyData = JSON.parse(localStorage.getItem('history'));
+  if (historyData && historyData.length > 0) {
+    historyBtn.classList.remove('hidden');
+  } else {
+    historyBtn.classList.add('hidden');
+  }
+
+  historyBtn.addEventListener('click', () => {
+    console.log('View History clicked');
+    modal.classList.remove('hidden');
+  });
+
+  closeModalBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
+
+  window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      modal.classList.add('hidden');
+    }
+  });
+
   document.getElementById(SUBMIT_BTN_ID).addEventListener('click', function () {
     handleSubmit();
     document.getElementById(CONFIRM_ID).classList.remove('hidden');
@@ -34,10 +62,18 @@ export function initializeEventHandlers() {
       .value.trim()
       .replace(/[^0-9A-Fa-f]/g, '');
     hexInput = `#${hexInput}`;
-    fetchColor(hexInput.replace('#', ''));
+    const colors = fetchColor(hexInput.replace('#', ''));
     document.getElementById(CONFIRM_ID).classList.add('hidden');
     enableSubmitButton();
+    historyBtn.classList.remove('hidden');
   });
+
+  document
+    .getElementById(HISTORY_BTN_ID)
+    .addEventListener('click', function () {
+      const loadHistory = setupHistoryModal();
+      loadHistory();
+    });
 
   document.getElementById(NO_BTN_ID).addEventListener('click', function () {
     resetBackgroundColor();
